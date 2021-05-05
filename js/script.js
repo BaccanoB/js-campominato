@@ -18,7 +18,6 @@ var bombe = [];
 
 while (bombe.length < 16){
       var numeroCasuale = numeriCasuali(1, 100);
-      console.log(numeroCasuale);
       if (!numeroInArray(numeroCasuale, bombe)){
           bombe.push(numeroCasuale);
       }
@@ -32,16 +31,45 @@ console.log(bombe);
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
 
-var scelteUtente = [];
-var richiesta = 84;
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 => tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+var difficolta;
+do {
+    difficolta = parseInt(prompt("Decidi il livello di difficoltà tra 0, 1 e 2"))
+} while (difficolta !== 0 && difficolta !== 1 && difficolta !== 2);
 
+var richiesta = 0;
+
+switch (difficolta){
+    case 0:
+        richiesta = 84;
+        break;
+    case 1:
+        richiesta = 64;
+        break;
+    case 2:
+        richiesta = 34;
+        break;
+}
+
+// opzione bonus con if:
+// if (difficoltà == 0){
+//     richiesta = 84;
+// }else if (difficoltà == 1) {
+//     richiesta = 64;
+// }else if ( difficoltà ==2) {
+//     richiesta = 34;
+// }
+
+var scelteUtente = [];
 var giocoFinito = 0;
 
 
 while (scelteUtente.length < richiesta && giocoFinito == 0){
     var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
     console.log(numeroUtente);
-    
+
     if(isNaN(numeroUtente) || numeroUtente > 100 || numeroUtente < 1){
         var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
     } else if (numeroInArray(numeroUtente, bombe)){
@@ -52,15 +80,9 @@ while (scelteUtente.length < richiesta && giocoFinito == 0){
     }
 }
 
+// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
+
 if (scelteUtente.length == richiesta) {
     console.log("Hai vinto! Il tuo punteggio è " + scelteUtente.length);
 }
 
-
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
-
-// BONUS: (da fare solo se funziona tutto il resto)
-// all'inizio il software richiede anche una difficoltà all'utente che cambia il range di numeri casuali:
-// con difficoltà 0 => tra 1 e 100
-// con difficoltà 1 => tra 1 e 80
-// con difficoltà 2 => tra 1 e 50
