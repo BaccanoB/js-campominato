@@ -23,7 +23,7 @@ while (bombe.length < 16){
       }
  }
 
-console.log(bombe);
+console.log("array bombe ",bombe);
 
 
 // In seguito deve chiedere all'utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
@@ -74,7 +74,7 @@ while (scelteUtente.length < richiesta && giocoFinito == 0){
         var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
     } else if (numeroInArray(numeroUtente, bombe)){
         giocoFinito = 1;
-        console.log("Il gioco è terminato: il tuo punteggio è " + scelteUtente.length);
+        document.getElementById("risultato").innerHTML = "Il gioco è terminato: il tuo punteggio è " + scelteUtente.length
     } else if (!numeroInArray(numeroUtente, scelteUtente)){
         scelteUtente.push(numeroUtente);
     }
@@ -83,6 +83,8 @@ while (scelteUtente.length < richiesta && giocoFinito == 0){
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 
 if (scelteUtente.length == richiesta) {
-    console.log("Hai vinto! Il tuo punteggio è " + scelteUtente.length);
+    document.getElementById("risultato").innerHTML = "Hai vinto! Il tuo punteggio è " + scelteUtente.length
 }
+
+console.log("array utente ",scelteUtente);
 
