@@ -37,10 +37,14 @@ var richiesta = 84;
 
 var giocoFinito = 0;
 
+
 while (scelteUtente.length < richiesta && giocoFinito == 0){
     var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
     console.log(numeroUtente);
-    if (numeroInArray(numeroUtente, bombe)){
+    
+    if(isNaN(numeroUtente) || numeroUtente > 100 || numeroUtente < 1){
+        var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
+    } else if (numeroInArray(numeroUtente, bombe)){
         giocoFinito = 1;
         console.log("Il gioco è terminato: il tuo punteggio è " + scelteUtente.length);
     } else if (!numeroInArray(numeroUtente, scelteUtente)){
