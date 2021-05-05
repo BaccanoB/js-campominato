@@ -7,7 +7,7 @@ function numeriCasuali(min, max) {
 
 function numeroInArray (elemento, array){
     for (var i = 0; i < array.length; i++){
-        if (elemento == array[i]);{
+        if (elemento == array[i]){
             return true;
         }
     }
@@ -17,12 +17,12 @@ function numeroInArray (elemento, array){
 var bombe = [];
 
 while (bombe.length < 16){
-     var numeroCasuale = numeriCasuali(1, 100);
-    console.log(numeroCasuale);
-    // if (!numeroInArray(numeroCasuale, bombe)){
-    //     bombe.push(numeroCasuale);
-    // }
-}
+      var numeroCasuale = numeriCasuali(1, 100);
+      console.log(numeroCasuale);
+      if (!numeroInArray(numeroCasuale, bombe)){
+          bombe.push(numeroCasuale);
+      }
+ }
 
 console.log(bombe);
 
@@ -31,6 +31,27 @@ console.log(bombe);
 // L'utente non può inserire più volte lo stesso numero.
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
+
+var scelteUtente = [];
+var richiesta = 84;
+
+var giocoFinito = 0;
+
+while (scelteUtente.length < richiesta && giocoFinito == 0){
+    var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
+    console.log(numeroUtente);
+    if (numeroInArray(numeroUtente, bombe)){
+        giocoFinito = 1;
+        console.log("Il gioco è terminato: il tuo punteggio è " + scelteUtente.length);
+    } else if (!numeroInArray(numeroUtente, scelteUtente)){
+        scelteUtente.push(numeroUtente);
+    }
+}
+
+if (scelteUtente.length == richiesta) {
+    console.log("Hai vinto! Il tuo punteggio è " + scelteUtente.length);
+}
+
 
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 
