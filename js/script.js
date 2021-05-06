@@ -14,26 +14,6 @@ function numeroInArray (elemento, array){
     return false
 }
 
-var bombe = [];
-
-while (bombe.length < 16){
-      var numeroCasuale = numeriCasuali(1, numeroMassimo);
-      if (!numeroInArray(numeroCasuale, bombe)){
-          bombe.push(numeroCasuale);
-      }
- }
-
-console.log("array bombe ",bombe);
-
-
-// In seguito deve chiedere all'utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// L'utente non può inserire più volte lo stesso numero.
-// Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
-// La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
-
-// con difficoltà 0 => tra 1 e 100
-// con difficoltà 1 => tra 1 e 80
-// con difficoltà 2 => tra 1 e 50
 var difficolta;
 do {
     difficolta = parseInt(prompt("Decidi il livello di difficoltà tra 0, 1 e 2"))
@@ -57,6 +37,28 @@ switch (difficolta){
         break;
 }
 
+var bombe = [];
+
+while (bombe.length < 16){
+      var numeroCasuale = numeriCasuali(1, numeroMassimo);
+      if (!numeroInArray(numeroCasuale, bombe)){
+          bombe.push(numeroCasuale);
+      }
+ }
+
+console.log("array bombe ",bombe);
+
+
+// In seguito deve chiedere all'utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+// L'utente non può inserire più volte lo stesso numero.
+// Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
+// La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
+
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 => tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+
+
 // opzione bonus con if:
 // if (difficoltà == 0){
 //     richiesta = 84;
@@ -71,11 +73,11 @@ var giocoFinito = 0;
 
 
 while (scelteUtente.length < richiesta && giocoFinito == 0){
-    var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
+    var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e " + numeroMassimo))
     console.log(numeroUtente);
 
     if(isNaN(numeroUtente) || numeroUtente > numeroMassimo || numeroUtente < 1){
-        var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
+        var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e " + numeroMassimo))
     } else if (numeroInArray(numeroUtente, bombe)){
         giocoFinito = 1;
         document.getElementById("risultato").innerHTML = "Il gioco è terminato: il tuo punteggio è " + scelteUtente.length
