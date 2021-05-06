@@ -14,6 +14,20 @@ function numeroInArray (elemento, array){
     return false
 }
 
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 => tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+
+
+// opzione bonus con if:
+// if (difficoltà == 0){
+//     richiesta = 84;
+// }else if (difficoltà == 1) {
+//     richiesta = 64;
+// }else if ( difficoltà ==2) {
+//     richiesta = 34;
+// }
+
 var difficolta;
 do {
     difficolta = parseInt(prompt("Decidi il livello di difficoltà tra 0, 1 e 2"))
@@ -53,20 +67,6 @@ console.log("array bombe ",bombe);
 // L'utente non può inserire più volte lo stesso numero.
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
-
-// con difficoltà 0 => tra 1 e 100
-// con difficoltà 1 => tra 1 e 80
-// con difficoltà 2 => tra 1 e 50
-
-
-// opzione bonus con if:
-// if (difficoltà == 0){
-//     richiesta = 84;
-// }else if (difficoltà == 1) {
-//     richiesta = 64;
-// }else if ( difficoltà ==2) {
-//     richiesta = 34;
-// }
 
 var scelteUtente = [];
 var giocoFinito = 0;
