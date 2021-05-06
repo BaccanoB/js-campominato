@@ -17,7 +17,7 @@ function numeroInArray (elemento, array){
 var bombe = [];
 
 while (bombe.length < 16){
-      var numeroCasuale = numeriCasuali(1, 100);
+      var numeroCasuale = numeriCasuali(1, numeroMassimo);
       if (!numeroInArray(numeroCasuale, bombe)){
           bombe.push(numeroCasuale);
       }
@@ -40,15 +40,19 @@ do {
 } while (difficolta !== 0 && difficolta !== 1 && difficolta !== 2);
 
 var richiesta = 0;
+var numeroMassimo = 0;
 
 switch (difficolta){
     case 0:
+        numeroMassimo = 100;
         richiesta = 84;
         break;
     case 1:
+        numeroMassimo = 80;
         richiesta = 64;
         break;
     case 2:
+        numeroMassimo = 50;
         richiesta = 34;
         break;
 }
@@ -70,7 +74,7 @@ while (scelteUtente.length < richiesta && giocoFinito == 0){
     var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
     console.log(numeroUtente);
 
-    if(isNaN(numeroUtente) || numeroUtente > 100 || numeroUtente < 1){
+    if(isNaN(numeroUtente) || numeroUtente > numeroMassimo || numeroUtente < 1){
         var numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"))
     } else if (numeroInArray(numeroUtente, bombe)){
         giocoFinito = 1;
