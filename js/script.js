@@ -54,7 +54,7 @@ switch (difficolta){
 var bombe = [];
 
 while (bombe.length < 16){
-      var numeroCasuale = numeriCasuali(1, numeroMassimo);
+      var numeroCasuale = numeriCasuali(1, 100);
       if (!numeroInArray(numeroCasuale, bombe)){
           bombe.push(numeroCasuale);
       }
